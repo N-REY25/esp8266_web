@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ESP8266</title>
+
+        <!-- JQ -->
+        <script src="/js/jquery.js" ></script>
+
+        <!-- STYLE -->
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
+
+            body {
+                display: flex;
+            }
+
+            a {
+                background-color: #000;
+                color: #fff;
+                border-width: 2px;
+                border-style: solid;
+                border-color: #000;
+                padding-top: 5px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-bottom: 5px;
+                margin: 10px;
+                cursor: pointer;
+                transition: 0.3s;
+            }
+
+            a:hover {
+                background-color: #ffffff;
+                color: #000000;
+            }
+        </style>
+    </head>
+    <body>
+        <a onclick="button_control('on')">on</a>
+        <a onclick="button_control('off')">off</a>
+
+        <script>
+            function button_control(url) {
+                esp_ip = '192.168.0.19';
+
+                $.ajax({
+                    url: 'http://' + esp_ip + '/' + url,
+                    method: 'get',
+                    success: function(data){
+                        alert('OK!');
+                    }
+                });
+            }
+        </script>
+    </body>
+</html>
